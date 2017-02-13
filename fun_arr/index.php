@@ -25,14 +25,10 @@
 
     /* Функция для нашей сортировки по городам */
     function sort_city ($v1, $v2) {
-        /* Сравниваем значение по ключу city */
-        if ($v1["city"] == $v2["city"]) return 0;
-            return ($v1["city"] < $v2["city"])? -1: 1;
+        return $v1["city"] <=> $v2["city"];
     }
     function sort_population ($v1, $v2) {
-        /* Сравниваем значение по ключу city */
-        if ($v1["population"] == $v2["population"]) return 0;
-            return ($v1["population"] < $v2["population"])? -1: 1;
+        return $v1["population"] <=> $v2["population"];
     }
     usort($city_population, "sort_city");
     echo '<pre>';
@@ -46,7 +42,7 @@
     print_r($city_population);
 
     //Статистика по штатам и их насилению
-    $state_statistic = ARRAY();
+    $state_statistic = [];
     for($i = 0; $i < $count; $i++){
         // echo $city_population[$i]['state'].'<br>';
         if($key = array_search($city_population[$i]['state'], $state_statistic)){
